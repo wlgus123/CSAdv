@@ -6,17 +6,24 @@ using System.Windows.Forms;
 
 namespace CSAdv
 {
-    internal static class Program
+    class Wanted<T>
     {
-        /// <summary>
-        /// 해당 애플리케이션의 주 진입점입니다.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        public T Value;
+        public Wanted(T value) {
+            this.Value = value; 
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Wanted<string> wantedString = new Wanted<string>("string");
+            Wanted<int> wantedInt = new Wanted<int>(52273);
+            Wanted<double> wantedDouble = new Wanted<double>(52.273);
+
+            Console.WriteLine(wantedString.Value);
+            Console.WriteLine(wantedInt.Value);
+            Console.WriteLine(wantedDouble.Value);
         }
     }
 }
